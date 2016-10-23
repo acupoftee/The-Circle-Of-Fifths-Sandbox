@@ -1,0 +1,23 @@
+{
+  "name": "circleoffifths",
+  "version": "1.0.0",
+  "description": "sandbox for people to learn about the circle of fifths",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bethydiakabananas/The-Circle-Of-Fifths-Sandbox.git"
+  },
+  "keywords": [
+    "circleoffifths",
+    "music",
+    "musictheory"
+  ],
+  "author": "Bethy Diakabana",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bethydiakabananas/The-Circle-Of-Fifths-Sandbox/issues"
+  },
+  "homepage": "https://github.com/bethydiakabananas/The-Circle-Of-Fifths-Sandbox#readme"
+}
