@@ -33,7 +33,7 @@ define(function() {
             startAngle : startAngle - threshold,
             endAngle : startAngle + arcSize + threshold,
             innerRadius : innerRadius,
-            outerRadius : 1,
+            outerRadius : 1
         };
         coordinates.center = toCartesian((coordinates.endAngle + coordinates.startAngle) / 2,
             (coordinates.outerRadius + coordinates.innerRadius) / 2);
@@ -41,6 +41,24 @@ define(function() {
         startAngle += arcSize;
     }
 
+    for (var j = 0; j < minorOrder; j++) {
+        var minorCoords = {
+            startAngle : startAngle - threshold,
+            endAngle : startAngle + arcSize + threshold,
+            innerRadius : 0,
+            outerRadius : innerRadius
+        };
+        minorCoords.center = toCartesian((minorCoords.endAngle + coordinates.startAngle) / 2,
+            (minorCoords.outerRadius * 3) / 4);
+        minorCoordinates[minorOrder[j]] = minorCoords;
+        startAngle += arcSize;
+    }
 
-
-})
+    return {
+        major : majorCoordinates,
+        minor : minorCoordinates,
+        majorOrder : majorOrder,
+        minorOrder : minorOrder,
+        innerRadius : innerRadius
+    };
+});
