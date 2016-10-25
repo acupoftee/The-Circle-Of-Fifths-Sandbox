@@ -19,5 +19,18 @@
   "bugs": {
     "url": "https://github.com/bethydiakabananas/The-Circle-Of-Fifths-Sandbox/issues"
   },
-  "homepage": "https://github.com/bethydiakabananas/The-Circle-Of-Fifths-Sandbox#readme"
+  "homepage": "https://github.com/bethydiakabananas/The-Circle-Of-Fifths-Sandbox#readme",
+  "devDependencies": {
+    "requirejs": "^2.3.2"
+  },
+  "dependencies": {
+    "domready": "^1.0.8",
+    "jquery": "^3.1.1",
+    "jquery-knob": "^1.2.11",
+    "slick-carousel": "^1.6.0",
+    "startaudiocontext": "^1.2.0",
+    "teoria": "^2.2.0",
+    "tinycolor2": "^1.4.1",
+    "tone": "^0.8.0"
+  }
 }
