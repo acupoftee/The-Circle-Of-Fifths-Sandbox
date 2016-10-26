@@ -1,0 +1,32 @@
+$orange: #ffb729
+$green: #ffb729
+$lightGray: #ededed
+$gray: rgb(204, 204, 204)
+$lightGray: rgb(242, 242, 242)
+$darkGray: rgb(100, 100, 100)
+
+/* window aesthetics */
+$topBarHeight: 0px
+$partHeight: 200px
+$smallPartHeight: 160px
+$margin: 12px
+$buttonSize: 60px
+$buttonMargin: 20px
+$smallButtonSize: 60px
+$smallButtonMargin: 10px
+$smallScreen: 360px
+$smallScreenHeight: 500px
+
+=smallHeight
+  @media (max-height: #{$smallScreenHeight})
+    @content
+
+=smallWidth
+  @media (max-width: #{$smallScreenHeight})
+    @content
+
+
+
+
+
+
