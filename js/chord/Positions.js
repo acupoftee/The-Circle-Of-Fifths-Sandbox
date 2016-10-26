@@ -41,6 +41,7 @@ define(function() {
         startAngle += arcSize;
     }
 
+    // onto the minor slices
     for (var j = 0; j < minorOrder; j++) {
         var minorCoords = {
             startAngle : startAngle - threshold,
