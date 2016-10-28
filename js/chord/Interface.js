@@ -8,7 +8,7 @@ define(["jquery", "chord/Positions"], function($, Positions) {
         }).appendTo(container);
 
         this.element.on("mousedown", this.mouseup.bind(this));
-        this.element.on("touchstart", this.click.bind(this));
+        this.element.on("touchstart", this.touchstart.bind(this));
         this.element.on("touchend", this.mouseup.bind(this));
         this.element.on("mouseup", this.mouseup.bind(this));
 
@@ -44,4 +44,30 @@ define(["jquery", "chord/Positions"], function($, Positions) {
             return [Positions.majorOrder[i], "major"];
         }
     };
+
+    Interface.prototype.mousedown = function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var res = this.getChord(e.offsetX, e.offsetY);
+        this.onstart(res[0], res[1]);
+    };
+
+    Interface.prototype.touchstart = function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var touches = e.originalEvent.touches;
+        var offset = this.element.offset();
+
+        if (touches.length > 0){
+            var touch = touches[0];
+            var res = this.getChord(touch.pageX - offset.left, touch.pageY - offset.top);
+            this.onstart(res[0], res[1]);
+        }
+    };
+
+    Interface.prototype.mouseup = function(e) {
+        this.onend();
+    };
+
+    return Interface;
 });
