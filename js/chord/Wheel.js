@@ -43,5 +43,46 @@ define(["jquery", "wheel/Colors", "chord.sass", "chord/Positions", "tinycolor2"]
             this.innerRadius = 0.66 * this.radius;
         };
 
-    }
-));
+        Wheel.prototype.draw = function(highlightLetter, major) {
+            this.curentLetter = highlightLetter;
+            this.currentKey = major;
+            this.context.clearRect(0, 0, this.context.canvas.width, this.context.canvas.height);
+            major = major === "major";
+            var centerX = this.canvas.width();
+            var centerY = this.canvas.height();
+
+            // draws the major notes first
+            for (var majorChordLetter in positions.major) {
+                var majorChord = Positions.major[majorChordLetter];
+                if (majorChordLetter == highlightLetter && major) {
+                    this.context.fillStyle = "black"
+                } else {
+                    this.context.fillStyle = Colors[majorChordLetter];
+                }
+                this.context.beginPath();
+                this.context.moveTo(centerX, centerY);
+                this.context.arc(centerX, centerY,
+                    this.radius * majorChord.outerRadius,
+                    majorChord.startAngle, majorChord.endAngle, false);
+                this.context.fill();
+            }
+
+            // and now the minor notes
+            for (var minorChordLetter in positions.minor) {
+                var minorChord = Positions.minor[minorChordLetter];
+                if (minorChordLetter == highlightLetter && !major) {
+                    this.context.fillStyle = "black"
+                } else {
+                    this.context.fillStyle = Colors[minorChordLetter];
+                }
+                this.context.beginPath();
+                this.context.moveTo(centerX, centerY);
+                this.context.arc(centerX, centerY,
+                    this.radius * minorChord.outerRadius,
+                    minorChord.startAngle, minorChord.endAngle, false);
+                this.context.fill();
+            }
+        };
+
+        return Wheel;
+});
